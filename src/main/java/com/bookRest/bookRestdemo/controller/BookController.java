@@ -41,8 +41,10 @@ public class BookController {
 	@PutMapping("/books/{id}")
 	public Book update(@PathVariable int id, @RequestBody Book book) {
 	Book bookToUpdate = bookRepo.findById(id).get();
-	if(book !=null) {
+	if(book.getTitle() !=null) {
 	bookToUpdate.setTitle(book.getTitle());
+	}
+	if(book.getDescription() !=null) {
 	bookToUpdate.setDescription(book.getDescription());
 	}
 	return bookRepo.save(bookToUpdate);
